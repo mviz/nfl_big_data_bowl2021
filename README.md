@@ -70,16 +70,25 @@ The idea here is that on the whole there may not be a large differences in play 
 *   Plays with fewer than 15 yards to the endzone
 *   Plays with more than 50 yards to the end zone
 
+### Breakdowns of Net Yards Gained
+
+*   Bolded categories have the "best" point estimates, but aren't guaranteed to be statistically different from other values
+*   Note that plays `near endzone` are skewed because the maximum yardage to-be-gained 
+
+**This table shows the summary stats of `net yards gained` for the breakdown categories.**
+
 
 | Summaries |           |             |             |               |                  |
 |----------:|-----------|-------------|-------------|---------------|------------------|
 |           | All plays | 4th Quarter | Tight Score | Near Endzone* | Far from Endzone |
 | Count     | 19239     | 5294        | 12937       | 326           | 11784            |
 | Mean      | 6.47      | 6.33        | **6.5**         | 2.56          | 6.53             |
-| Std Dev   | 10.57     | 10.54       | 10.77       | 6.31          | 10.58            |
+| Std Dev   | 10.57     | **10.54**       | 10.77       | 6.31          | 10.58            |
 | 25%       | 0         | 0           | 0           | 0             | 0                |
 | 50%       | 4         | 4           | 4           | 1             | 4                |
 | 75%       | 11        | 10          | 11          | 4             | 11               |
+
+**This table shows the average `net yards gained` for each of the different scenarios**
 
 | Average Yards Gained |              |             |             |                  |                    |
 |----------------------|--------------|-------------|-------------|------------------|--------------------|
@@ -91,6 +100,8 @@ The idea here is that on the whole there may not be a large differences in play 
 | Jumbo                | 1.73 (915)   | 1.8 (10)    | 1.92 (39)   | **2.77** (26)        | 0.72 (22)          |
 | Shotgun              | 6.11 (12627) | **6.22** (3964) | 6.03 (8175) | 6.20 (7813)      | 2.55 (169)         |
 
+**This table shows the standard devation of `net yards gained` for each of the different scenarios**.
+
 | StdDev Yards Gained |               |              |              |                  |                  |
 |---------------------|---------------|--------------|--------------|------------------|------------------|
 |                     | All plays     | 4th Quarter  | Tight Score  | Far from Endzone | Close to Endzone |
@@ -101,5 +112,46 @@ The idea here is that on the whole there may not be a large differences in play 
 | Jumbo               | 7.17 (915)    | 2.70 (10)    | 8.09 (39)    | 9.95 (26)        | 1.28 (22)        |
 | Shotgun             | 10.14 (12627) | 10.22 (3964) | 12.27 (8175) | 10.23 (7813)     | 6.60 (169)       |
 
+### Breakdowns for probabilities of gaining N yards
+
+**This table shows the prebability each play gains positive yardage**
+
+| Prob of positive yards |           |             |             |                  |                  |
+|------------------------|-----------|-------------|-------------|------------------|------------------|
+|                        | All plays | 4th Quarter | Tight Score | Far from Endzone | Close to Endzone |
+| Pistol                 | 0.64      | 0.60        | 0.65        | 0.69             | 0.50             |
+| Wildcat                | 0.56      | 0.38        | 0.52        | 0.55             | 0.67             |
+| Singleback             | 0.59      | 0.58        | 0.59        | 0.58             | 0.56             |
+| I Form                 | 0.62      | 0.66        | 0.61        | 0.61             | 0.64             |
+| Jumbo                  | 0.45      | 0.70        | 0.44        | 0.35             | 0.64             |
+| Shotgun                | 0.58      | 0.59        | 0.57        | 0.58             | 0.53             |
+
+**This table shows the prebability each play gains at least 3 yards**
+
+Note that plays close to endzone are skewed because there may not be more than 3 yards to go.
+
+| Prob of >3 yards |           |             |             |                  |                  |
+|------------------|-----------|-------------|-------------|------------------|------------------|
+|                  | All plays | 4th Quarter | Tight Score | Far from Endzone | Close to Endzone |
+| Pistol           | 0.61      | 0.58        | 0.61        | 0.67             | 0.33             |
+| Wildcat          | 0.53      | 0.38        | 48          | 0.50             | 0.67             |
+| Singleback       | 0.55      | 0.52        | 0.55        | 0.54             | 0.29             |
+| I Form           | 0.59      | 0.60        | 0.57        | 0.58             | 0.50             |
+| Jumbo            | 0.10      | 0.20        | 0.10        | 0.12             | 0.09             |
+| Shotgun          | 0.55      | 0.56        | 0.54        | 0.55             | 0.38             |
+
+**This table shows the prebability each play gains at least 10 yards**
+
+Note I did not include "close to endzone" because many of the plays had fewer than 10 yard sto go.
+
+| Prob of >10 yards |           |             |             |                  |
+|-------------------|-----------|-------------|-------------|------------------|
+|                   | All plays | 4th Quarter | Tight Score | Far from Endzone |
+| Pistol            | 0.31      | 0.30        | 0.31        | 0.34             |
+| Wildcat           | 0.14      | 0.00        | 0.10        | 0.10             |
+| Singleback        | 0.34      | 0.32        | 0.35        | 0.34             |
+| I Form            | 0.35      | 0.36        | 0.34        | 0.36             |
+| Jumbo             | 0.02      | 0.00        | 0.23        | 0.04             |
+| Shotgun           | 0.27      | 0.27        | 0.26        | 0.27             |
 
 # Files overview

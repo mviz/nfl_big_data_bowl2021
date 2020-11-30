@@ -15,7 +15,7 @@ I confirmed my hypothesis that in fact these features would do a poor job predic
 
 As a fallback, I compared a few strategic scenarios and looked at which offensive formations had the longest average yards gained, and the smallest variance in yards gained.
 
-# Method & Results
+# Method
 Target variables:
 *   `Net yards gained`: number of yards advanced towards the endzone in the play
 *   `Pass result`: the outcome of the pass, either `complete`, `incomplete`, `sack`, `intercepted`.
@@ -27,7 +27,7 @@ Features:
 *   `Breakdown of defenders`: multiple counts for the number of players in each position (linebackers, safeties, etc)
 *   `Breakdown of offenders`: multiple counts for the number of players in each position (tackles, receivers, etc)
 
-## Predicting net yards gained 
+# Predicting net yards gained results
 
 Regression task of predicting the numeric value: `net yards gained`.
 
@@ -45,7 +45,7 @@ Note that the estimates had very little variance. Linear regression isn't a grea
 ### Random forest regression
 TODO (mviz)
 
-## Predicting pass outcome
+# Predicting pass outcome results
 
 Classification task of predicting `pass result`.
 
@@ -59,7 +59,7 @@ Here are the weighted results:
 *   Weighted F(0.5) Score = `0.37`
 *   Weighted false positive rate = `0.58`
 
-## Comparing plays
+# Comparing plays
 Given the challenges with predicting yards gained, and the pass result, I wanted to explore some discrete breakdowns of the data.
 
 The idea here is that on the whole there may not be a large differences in play outcomes, there may be things we can learn about basic strategy by looking at the average yards gained, and their standard deviations when you look at different scenarios, including:
@@ -70,7 +70,7 @@ The idea here is that on the whole there may not be a large differences in play 
 *   Plays with fewer than 15 yards to the endzone
 *   Plays with more than 50 yards to the end zone
 
-### Breakdowns of Net Yards Gained
+## Breakdowns of Net Yards Gained
 
 *   Bolded categories have the "best" point estimates, but aren't guaranteed to be statistically different from other values
 *   Note that plays `near endzone` are skewed because the maximum yardage to-be-gained 
@@ -112,19 +112,19 @@ The idea here is that on the whole there may not be a large differences in play 
 | Jumbo               | 7.17 (915)    | 2.70 (10)    | 8.09 (39)    | 9.95 (26)        | 1.28 (22)        |
 | Shotgun             | 10.14 (12627) | 10.22 (3964) | 12.27 (8175) | 10.23 (7813)     | 6.60 (169)       |
 
-### Breakdowns for probabilities of gaining N yards
+## Breakdowns for probabilities of gaining N yards
 
 **This table shows the prebability each play gains positive yardage**
 
 | Prob of positive yards |           |             |             |                  |                  |
 |------------------------|-----------|-------------|-------------|------------------|------------------|
 |                        | All plays | 4th Quarter | Tight Score | Far from Endzone | Close to Endzone |
-| Pistol                 | 0.64      | 0.60        | 0.65        | 0.69             | 0.50             |
-| Wildcat                | 0.56      | 0.38        | 0.52        | 0.55             | 0.67             |
-| Singleback             | 0.59      | 0.58        | 0.59        | 0.58             | 0.56             |
-| I Form                 | 0.62      | 0.66        | 0.61        | 0.61             | 0.64             |
-| Jumbo                  | 0.45      | 0.70        | 0.44        | 0.35             | 0.64             |
-| Shotgun                | 0.58      | 0.59        | 0.57        | 0.58             | 0.53             |
+| Pistol                 | 0.64      | 0.60        | 0.65        | **0.69**             | 0.50             |
+| Wildcat                | 0.56      | 0.38        | 0.52        | 0.55             | **0.67**             |
+| Singleback             | **0.59**      | 0.58        | **0.59**        | 0.58             | 0.56             |
+| I Form                 | 0.62      | **0.66**        | 0.61        | 0.61             | 0.64             |
+| Jumbo                  | 0.45      | **0.70**        | 0.44        | 0.35             | 0.64             |
+| Shotgun                | 0.58      | **0.59**        | 0.57        | 0.58             | 0.53             |
 
 **This table shows the prebability each play gains at least 3 yards**
 
@@ -133,12 +133,12 @@ Note that plays close to endzone are skewed because there may not be more than 3
 | Prob of >3 yards |           |             |             |                  |                  |
 |------------------|-----------|-------------|-------------|------------------|------------------|
 |                  | All plays | 4th Quarter | Tight Score | Far from Endzone | Close to Endzone |
-| Pistol           | 0.61      | 0.58        | 0.61        | 0.67             | 0.33             |
-| Wildcat          | 0.53      | 0.38        | 48          | 0.50             | 0.67             |
-| Singleback       | 0.55      | 0.52        | 0.55        | 0.54             | 0.29             |
-| I Form           | 0.59      | 0.60        | 0.57        | 0.58             | 0.50             |
-| Jumbo            | 0.10      | 0.20        | 0.10        | 0.12             | 0.09             |
-| Shotgun          | 0.55      | 0.56        | 0.54        | 0.55             | 0.38             |
+| Pistol           | 0.61      | 0.58        | 0.61        | **0.67**             | 0.33             |
+| Wildcat          | 0.53      | 0.38        | 48          | 0.50             | **0.67**             |
+| Singleback       | 0.55      | 0.52        | **0.55**        | 0.54             | 0.29             |
+| I Form           | 0.59      | **0.60**        | 0.57        | 0.58             | 0.50             |
+| Jumbo            | 0.10      | **0.20**        | 0.10        | 0.12             | 0.09             |
+| Shotgun          | 0.55      | **0.56**        | 0.54        | 0.55             | 0.38             |
 
 **This table shows the prebability each play gains at least 10 yards**
 
@@ -147,11 +147,11 @@ Note I did not include "close to endzone" because many of the plays had fewer th
 | Prob of >10 yards |           |             |             |                  |
 |-------------------|-----------|-------------|-------------|------------------|
 |                   | All plays | 4th Quarter | Tight Score | Far from Endzone |
-| Pistol            | 0.31      | 0.30        | 0.31        | 0.34             |
-| Wildcat           | 0.14      | 0.00        | 0.10        | 0.10             |
-| Singleback        | 0.34      | 0.32        | 0.35        | 0.34             |
-| I Form            | 0.35      | 0.36        | 0.34        | 0.36             |
-| Jumbo             | 0.02      | 0.00        | 0.23        | 0.04             |
+| Pistol            | 0.31      | 0.30        | 0.31        | **0.34**             |
+| Wildcat           | **0.14**      | 0.00        | 0.10        | 0.10             |
+| Singleback        | 0.34      | 0.32        | **0.35**        | 0.34             |
+| I Form            | 0.35      | **0.36**        | 0.34        | **0.36**             |
+| Jumbo             | 0.02      | 0.00        | **0.23**        | 0.04             |
 | Shotgun           | 0.27      | 0.27        | 0.26        | 0.27             |
 
 # Files overview
